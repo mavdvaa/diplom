@@ -19,7 +19,7 @@ plugins:
 
 functions:
   api:
-    handler: handler.handler
+    handler: src/handler.handler
     events:
       - http:
           path: sha
@@ -33,20 +33,17 @@ functions:
           path: users
           method: post
   periodicWorker:
-    handler: handler.handler
+    handler: src/handler.handler
     events:
       - schedule: rate(1 minutes)
-  workerReg:
-    handler: handler.handler
-    events:
       - schedule: rate(1 minute)
-  workerAlpha:
-    handler: handler.handler
+  workerSha:
+    handler: src/handler.handler
     reservedConcurrency: 1 
     events:
       - schedule: rate(1 minute)
-  workerB:
-    handler: handler.handler
+  workerTriggered:
+    handler: src/handler.handler
     reservedConcurrency: 1 
     events:
       - schedule: rate(1 minute)

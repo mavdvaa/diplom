@@ -1,8 +1,8 @@
 import { createClient } from 'redis'
 import { createVerify, randomUUID, createHash } from 'crypto'
-import { publicKey, sign } from './cryptoPackage.mjs'
-import { scalingSHA, step, stepT } from './scaling.mjs'
-import { pool, userVerification } from './db.mjs'
+import { publicKey, sign } from './crypto/cryptoPackage.mjs'
+import { scalingSHA, step, stepT } from './scaling/scaling.mjs'
+import { pool, userVerification } from './db/db.mjs'
 
 
 const client = createClient()

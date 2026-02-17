@@ -1,10 +1,10 @@
 import crypto from 'crypto'
 import { createClient } from 'redis'
-import { initDB } from './db.mjs'
+import { initDB } from './db/db.mjs'
 import { processPeriodicTask } from './worker.mjs'
-import { publicKey, sign } from './cryptoPackage.mjs'
-import { countT, SHAWorkers, triggWorkers, count, stepT, rightResTrigg } from './scaling.mjs'
-import { pool, userVerification } from './db.mjs'
+import { publicKey, sign } from './crypto/cryptoPackage.mjs'
+import { countT, SHAWorkers, triggWorkers, count, stepT, rightResTrigg } from './scaling/scaling.mjs'
+import { pool, userVerification } from './db/db.mjs'
 
 initDB()
 
@@ -44,7 +44,7 @@ export const handler = async (event, context) => {
     }
   }
   // sha
-  if (functionName.includes('workerAlpha')) {
+  if (functionName.includes('workerSha')) {
 
     const checkQueueSha = await client.lLen('sha-task')
 
@@ -64,7 +64,7 @@ export const handler = async (event, context) => {
     }
   }
   // triggered
-  if (functionName.includes('workerB')) {
+  if (functionName.includes('workerTriggered')) {
 
     const lengthResult = `results`
 

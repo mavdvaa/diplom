@@ -1,4 +1,4 @@
-import { processShaTask, processTriggeredTask } from "./worker.mjs"
+import { processShaTask, processTriggeredTask } from "../worker.mjs"
 
 //sha
 export const step = [100, 500, 800, 850]
